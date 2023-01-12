@@ -26,7 +26,8 @@ from botbuilder.integration.applicationinsights.aiohttp import (
     AiohttpTelemetryProcessor,
     bot_telemetry_middleware,
 )
-
+if 1==1: 
+    pass
 from config import DefaultConfig
 from dialogs import MainDialog, BookingDialog
 from bots import DialogAndWelcomeBot
