@@ -168,11 +168,11 @@ class BookingDialog(CancelAndHelpDialog):
         obj_json = {}
         obj_json['dst_city']= booking_details.dst_city
         if step_context.result :
-            self.telemetry_client.track_trace('yes', obj_json, 'Information' )
-            self.telemetry_client.flush()
+            self.telemetry_client.track_trace("SUCCESS", obj_json, "INFO" )
+             #self.telemetry_client.flush()
             return await step_context.end_dialog(booking_details)
         else:
-            self.telemetry_client.track_trace('no', obj_json, 'Warning' )
+            self.telemetry_client.track_trace("FAILURE", obj_json, "ERROR")
             msg = (f"Nous ne sommes pas en mesure de confirmer votre demande")
             return await step_context.prompt(
             ConfirmPrompt.__name__, PromptOptions(prompt=MessageFactory.text(msg))
