@@ -168,21 +168,21 @@ class BookingDialog(CancelAndHelpDialog):
         obj_json = {}
         obj_json['dst_city']= booking_details.dst_city
         if step_context.result :
-            self.telemetry_client.track_trace("SUCCESS", obj_json, "INFO" )
+            self.telemetry_client.track_trace("SUCCESS", obj_json,severity="INFO" )
              #self.telemetry_client.flush()
-            return await step_context.end_dialog(booking_details)
+            #return await step_context.end_dialog(booking_details)
         else:
-            self.telemetry_client.track_trace("FAILURE", obj_json, "ERROR")
-            msg = (f"Nous ne sommes pas en mesure de confirmer votre demande")
-            return await step_context.prompt(
-            ConfirmPrompt.__name__, PromptOptions(prompt=MessageFactory.text(msg))
-        )
+            self.telemetry_client.track_trace("FAILURE", obj_json, severity="ERROR")
+           # msg = (f"Nous ne sommes pas en mesure de confirmer votre demande")
+           # return await step_context.prompt(
+           # ConfirmPrompt.__name__, PromptOptions(prompt=MessageFactory.text(msg))
+        #)
         #if step_context.result:
          #   booking_details = step_context.options
             # booking_details.str_date = step_context.result
 
             
-
+        self.telemetry_client.flush()
         return await step_context.end_dialog()
 
     def is_ambiguous(self, timex: str) -> bool:
