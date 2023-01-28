@@ -167,6 +167,11 @@ class BookingDialog(CancelAndHelpDialog):
         booking_details = step_context.options
         obj_json = {}
         obj_json['dst_city']= booking_details.dst_city
+        obj_json['str_city']= booking_details.str_city
+        obj_json['str_date']= booking_details.str_date
+        obj_json['end_date']= booking_details.end_date
+        obj_json['budget']= booking_details.budget
+        
         if step_context.result :
             self.telemetry_client.track_trace("SUCCESS", obj_json,severity="INFO" )
              #self.telemetry_client.flush()
