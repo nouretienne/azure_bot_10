@@ -167,7 +167,7 @@ class BookingDialog(CancelAndHelpDialog):
         booking_details = step_context.options
         obj_json = {}
         obj_json['dst_city']= booking_details.dst_city
-        obj_json['str_city']= booking_details.str_city
+        obj_json['or_city']= booking_details.or_city
         obj_json['str_date']= booking_details.str_date
         obj_json['end_date']= booking_details.end_date
         obj_json['budget']= booking_details.budget
