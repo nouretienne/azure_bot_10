@@ -20,4 +20,9 @@ class Test_Testdst_city(unittest.TestCase):
         input_text = 'I would like to go on vacation from Paris'
         _, result = await LuisHelper.execute_luis_query(self.luis_recognizer,input_text)
         self.assertEqual(result.__dict__['dst_city'], None)
+        
+    async def test_budget_valid(self):
+        input_text = 'I would like to go on vacation for less than $2000'
+        _, result = await LuisHelper.execute_luis_query(self.luis_recognizer, input_text)
+        self.assertEqual(result.__dict__['budget'],'$2000')
     
